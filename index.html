@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>My LIFF App</title>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+  <h1>Hello from LIFF!</h1>
+  <button onclick="getProfile()">Get Profile</button>
+  <p id="userInfo"></p>
+
+  <script>
+    async function main() {
+      await liff.init({ liffId: "2007741345-lX1MEmYO" }); // Replace with your LIFF ID
+      if (!liff.isLoggedIn()) {
+        liff.login();
+      }
+    }
+
+    async function getProfile() {
+      const profile = await liff.getProfile();
+      document.getElementById("userInfo").innerText = `Hello, ${profile.displayName}`;
+    }
+
+    main();
+  </script>
+</body>
+</html>
